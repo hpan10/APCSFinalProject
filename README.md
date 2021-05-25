@@ -10,3 +10,5 @@ Of course, we’re doing this on a much smaller scale than the original game, as
 into a 2D knockoff of it. The goal of the game is simple: use your car to hit a ball into the opposing net 
 and score more goals than your opponent. We intend to make this a two-player game and develop this project 
 in Processing.
+
+UML Diagram Link: https://lucid.app/lucidchart/911454f5-4ca5-45c0-a283-1028df9958a3/edit?beaconFlowId=62B0535290E07E75&page=0_0#
