@@ -25,3 +25,4 @@ Development Log (Emmanuel)
 --------------------------
 5/25/2021
 
+During class time, worked with Harry in the breakout room on setting up our basic structure. We succeeded in fitting our 4 files with the methods and instance variables, as well as their constructors, that we outlined in our UML. Long road ahead is right!
