@@ -18,17 +18,41 @@ void reset() {
 
 void move() {
   while (b1.y > 300) {
-    b1.decrementy();
+    b1.y--;
   }
   while (p1.y > 300) {
-    p1.decrementy();
+    p1.y--;
   }
   while (p2.y > 300) {
-    p2.decrementy();
+    p2.y--;
   }
 }
 
 void keyPressed() {
+  if (key == 'a' || key == 'A') {
+    p1.drive(-10);
+  }
+  if (key == 'd' || key == 'D') {
+    p1.drive(10);
+  }
+  if (key == 'w' || key == 'W') {
+    p1.jump();
+  }
+  if (keyCode == VK_SPACE) {
+    p1.boost();
+  }
+  if (keyCode == VK_KP_UP) {
+    p2.jump();
+  }
+  if (keyCode == VK_KP_LEFT) {
+    p2.drive(-10);
+  }
+  if (keyCode == VK_KP_RIGHT) {
+    p2.drive(10);
+  }
+  if (key == '/' || key == '?') {
+    p2.boost();
+  }
   
 }
 
