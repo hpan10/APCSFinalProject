@@ -14,3 +14,14 @@ in Processing.
 UML Diagram Link: https://lucid.app/lucidchart/911454f5-4ca5-45c0-a283-1028df9958a3/edit?beaconFlowId=62B0535290E07E75&page=0_0#
 
 Compile/Run instructions: It's in Processing, so just hit run!
+
+Development Log (Harry)
+-----------------------
+5/25/2021
+We wrote the code for the skeleton of our project. Long road ahead!
+
+
+Development Log (Emmanuel)
+--------------------------
+5/25/2021
+
