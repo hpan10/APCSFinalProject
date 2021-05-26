@@ -24,7 +24,8 @@ public class Car {
   }
   
   void jump() {
-    dy += 50;
+    dy -= 49;
+    inAir = true;
   }
   
   void display() {
