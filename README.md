@@ -17,7 +17,8 @@ Compile/Run instructions: It's in Processing, so just hit run!
 
 Development Log (Harry)
 -----------------------
-5/25/2021
+5/25/2021 
+
 We wrote the code for the skeleton of our project. Long road ahead!
 
 
