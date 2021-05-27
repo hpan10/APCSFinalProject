@@ -17,13 +17,13 @@ Compile/Run instructions: It's in Processing, so just hit run!
 
 Development Log (Harry)
 -----------------------
-<<<<<<< HEAD
-5/25/2021
-=======
 5/25/2021 
->>>>>>> 77633c36ad0b961652e238659b4247dd0618a44f
 
 We wrote the code for the skeleton of our project. Long road ahead!
+
+5/26/2021
+
+We worked on the display and movement of the cars. Keybinds are working and acceleration and gravity do too! Bright road ahead!
 
 
 Development Log (Emmanuel)
