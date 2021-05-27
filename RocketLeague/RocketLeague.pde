@@ -1,9 +1,13 @@
-Car p1 = new Car(100,300,0);
-Car p2 = new Car(800,300,180);
-Ball b1 = new Ball(50);
+Car p1;
+Car p2;
+Ball b1;
 
 void setup() {
   size(1600, 900);
+  p1 = new Car(100,300,0);
+ p2 = new Car(800,300,180);
+ b1 = new Ball(50);
+
 }
 
 void draw() {
@@ -41,10 +45,14 @@ void move() {
 
 void keyPressed() {
   if (key == 'a' || key == 'A') {
-    p1.drive(-10);
+    if (p1.dx >=0) {
+    p1.drive((int)p1.dx-10);
+    }
   }
   if (key == 'd' || key == 'D') {
-    p1.drive(10);
+    if (p1.dx <=0) {
+    p1.drive((int)p1.dx+10);
+    }
   }
   if (key == 'w' || key == 'W') {
     p1.jump();
@@ -64,6 +72,24 @@ void keyPressed() {
   if (key == '/' || key == '?') {
     p2.boost();
   }
+  
+}
+void keyReleased() {
+  if (key == 'a' || key == 'A') {
+    p1.drive(10);
+  }
+  if (key == 'd' || key == 'D') {
+    p1.drive(-10);
+  }
+  
+  
+  if (keyCode == 37) {
+    p2.drive(10);
+  }
+  if (keyCode == 39) {
+    p2.drive(-10);
+  }
+  
   
 }
 
