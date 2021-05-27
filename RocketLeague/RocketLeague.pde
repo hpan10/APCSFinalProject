@@ -42,6 +42,19 @@ void move() {
     p2.y = 600;
     p2.inAir = false;
   }
+  if (b1.y < 600 - b1.radius) {
+    b1.dy += 1;
+  }
+  if (b1.y > 600 - b1.radius) {
+    if (b1.dy > 2) {
+      b1.y = 600 - b1.radius;
+      b1.dy = -(b1.dy / 2);
+    }
+    else {
+      b1.dy = 0;
+      b1.y = 600 - b1.radius;
+    }
+  }
 }
 
 void keyPressed() {

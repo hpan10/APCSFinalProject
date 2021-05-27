@@ -16,8 +16,10 @@ public class Ball {
   }
   
   void display() {
+    x += dx;
+    y += dy;
     fill(127);
-    ellipse(x, y, height / 15, height / 15);
+    ellipse(x, y, radius * 2, radius * 2);
   }
   
 }
