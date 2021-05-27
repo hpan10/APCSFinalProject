@@ -25,15 +25,17 @@ void move() {
   //while (b1.y > 300) {
   //  b1.y--;
   //}
-  if (p1.dy <= 1) p1.dy += 4.9;
-  if (p2.dy <= 1) p2.dy += 4.9;
+  if (p1.inAir == true) p1.dy += 4.9;
+  if (p2.inAir == true) p2.dy += 4.9;
   if (p1.y > 600) {
     p1.dy = 0;
     p1.y = 600;
+    p1.inAir = false;
   }
   if (p2.y > 600) {
     p2.dy = 0;
     p2.y = 600;
+    p2.inAir = false;
   }
 }
 
