@@ -15,6 +15,7 @@ void draw() {
   background(255);
   p1.display();
   p2.display();
+  b1.display();
 }
 
 void background() {
@@ -64,10 +65,14 @@ void keyPressed() {
     p2.jump();
   }
   if (keyCode == 37) {
-    p2.drive(-10);
+    if (p2.dx >=0) {
+    p2.drive((int)p2.dx-10);
+    }
   }
   if (keyCode == 39) {
-    p2.drive(10);
+    if (p2.dx <=0) {
+    p2.drive((int)p2.dx+10);
+    }
   }
   if (key == '/' || key == '?') {
     p2.boost();
