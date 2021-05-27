@@ -56,13 +56,17 @@ void keyPressed() {
     }
   }
   if (key == 'w' || key == 'W') {
+    if (!p1.inAir) {
     p1.jump();
+    }
   }
   if (keyCode == 32) {
     p1.boost();
   }
   if (keyCode == 38) {
+    if (!p2.inAir) {
     p2.jump();
+    }
   }
   if (keyCode == 37) {
     if (p2.dx >=0) {
