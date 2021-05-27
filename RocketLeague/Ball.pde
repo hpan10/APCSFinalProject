@@ -11,12 +11,13 @@ public class Ball {
     dy = 0;
   }
   
-  void inGoal() {
-    
+  boolean inGoal() {
+    return (x < width / 16 || x > width * 15 / 16);
   }
   
   void display() {
-    
+    fill(127);
+    ellipse(x, y, height / 15, height / 15);
   }
   
 }
