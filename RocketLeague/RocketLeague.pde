@@ -58,12 +58,12 @@ void move() {
 }
 
 void keyPressed() {
-  if (key == 'a' || key == 'A') {
+  if ((key == 'a' || key == 'A')) {
     if (p1.dx >=0) {
     p1.drive((int)p1.dx-10);
     }
   }
-  if (key == 'd' || key == 'D') {
+  else if ((key == 'd' || key == 'D')) {
     if (p1.dx <=0) {
     p1.drive((int)p1.dx+10);
     }
@@ -98,10 +98,14 @@ void keyPressed() {
 }
 void keyReleased() {
   if (key == 'a' || key == 'A') {
+    if (p1.dx < 0) {
     p1.drive(10);
+    }
   }
   if (key == 'd' || key == 'D') {
+    if (p1.dx > 0) {
     p1.drive(-10);
+    }
   }
   
   
