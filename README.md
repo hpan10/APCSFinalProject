@@ -42,3 +42,7 @@ Our goal was to get the cars moving, and it was done. Harry drew the cars and wr
 5/27/21
 
 Today in class, I focused on refining movement. I made it so it was not tap to move, but press and hold to move, and I also eliminated double jumping. I then worked both on decelleration so it isnt a sudden stop, and implementing walls. Towards the end of class, Harry discovered a bug where pressing left and right would cause the speed to skyrocket, so those three things will be next session's goals.
+
+5/29/21
+
+In this session, I added bumping, where cars don't just pass through each other, and instead collide. I also added boundaries so the cars won't fly off of the map. We then worked together on adding acceleration and deccelleration to cars, and experimented with removing our key released method, but couldn't come up with a concrete solution.
