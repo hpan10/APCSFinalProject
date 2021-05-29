@@ -3,15 +3,15 @@ public class ScoreboardAndTimer {
   int p1Goals, p2Goals;
   int time; //seconds
   
-   ScoreboardAndTimer() {
+  ScoreboardAndTimer() {
     time = 300;
     p1Goals = 0;
     p2Goals = 0;
     textSize(height/15);
-    textAlign(CENTER);
   }
   
   void display() {
+    textAlign(CENTER);
     int minutes = time / 60;
     int seconds = time % 60;
     fill(0);
@@ -24,6 +24,8 @@ public class ScoreboardAndTimer {
     fill(255);
     if (seconds < 10) text("" + minutes + ":0" + seconds, width/2, height/15);
     else text("" + minutes + ":" + seconds, width/2, height/15);
+    text(p1Goals, (width - width/10 - width/17)/2, height/15);
+    text(p2Goals, (width + width/10 + width/17)/2, height/15);
   }
   
 }
