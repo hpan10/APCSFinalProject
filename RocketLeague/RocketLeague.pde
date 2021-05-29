@@ -6,8 +6,8 @@ long millis;
 
 void setup() {
   size(1600, 900);
-  p1 = new Car(100,300,0);
-  p2 = new Car(800,300,180);
+  p1 = new Car(100,300,0, color(0, 0, 255));
+  p2 = new Car(800,300,180, color (255, 140, 0));
   b1 = new Ball(50);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();

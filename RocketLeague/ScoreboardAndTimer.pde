@@ -22,7 +22,7 @@ public class ScoreboardAndTimer {
     fill(255, 140, 0);
     rect(width/2 + width/17, 5, width/2 + width/10, 5 + height/13, 0, 10, 10, 0);
     fill(255);
-    if (seconds == 0) text("" + minutes + ":00", width/2, height/15);
+    if (seconds < 10) text("" + minutes + ":0" + seconds, width/2, height/15);
     else text("" + minutes + ":" + seconds, width/2, height/15);
   }
   
