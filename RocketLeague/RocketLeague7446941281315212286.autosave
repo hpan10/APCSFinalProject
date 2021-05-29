@@ -1,26 +1,21 @@
 Car p1;
 Car p2;
 Ball b1;
-ScoreboardAndTimer t1;
-long millis;
 
 void setup() {
   size(1600, 900);
   p1 = new Car(100,300,0);
-  p2 = new Car(800,300,180);
-  b1 = new Ball(50);
-  t1 = new ScoreboardAndTimer();
-  millis = System.currentTimeMillis();
+ p2 = new Car(800,300,180);
+ b1 = new Ball(50);
+
 }
 
 void draw() {
-  tick();
   move();
   background(255);
   p1.display();
   p2.display();
   b1.display();
-  t1.display();
 }
 
 void background() {
@@ -61,6 +56,7 @@ void move() {
     }
   }
   if (p1.x <=20) {
+    p1.dx = p1.dx * -1;
     
     p1.x = 25;
     p1.dx = 0;
@@ -76,23 +72,6 @@ void move() {
   if (p2.x >= 1590) {
     p2.x = 1580;
     p2.dx = 0;
-  }
-  if (Math.abs(p1.x-p2.x) <=20 && Math.abs(p1.y-p2.y) <=20) {
-    p1.dx = 0;
-    p1.dy = 0;
-    p2.dx = 0;
-    p2.dy = 0;
-    if (p1.x > p2.x) {
-      p1.x = p1.x + 1;
-      p2.x = p2.x -1;
-    }
-    else {
-      p1.x = p1.x - 5;
-      p2.x = p2.x +5;
-    }
-    
-    
-    
   }
 }
 
@@ -163,6 +142,5 @@ void keyReleased() {
 }
 
 void tick() {
-  long nowMillis = System.currentTimeMillis();
-  t1.time = 300 - (int)(nowMillis - millis) / 1000;
+  
 }
