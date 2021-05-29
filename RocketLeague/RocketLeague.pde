@@ -110,10 +110,14 @@ void keyReleased() {
   
   
   if (keyCode == 37) {
+    if (p2.dx < 0) {
     p2.drive(10);
+    }
   }
   if (keyCode == 39) {
+        if (p2.dx > 0) {
     p2.drive(-10);
+    }
   }
   
   
