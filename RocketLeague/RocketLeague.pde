@@ -83,8 +83,8 @@ void move() {
     p2.dx = 0;
     p2.dy = 0;
     if (p1.x > p2.x) {
-      p1.x = p1.x + 1;
-      p2.x = p2.x -1;
+      p1.x = p1.x + 5;
+      p2.x = p2.x -5;
     }
     else {
       p1.x = p1.x - 5;
