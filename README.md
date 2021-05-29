@@ -25,6 +25,9 @@ We wrote the code for the skeleton of our project. Long road ahead!
 
 We worked on the display and movement of the cars. Keybinds are working and acceleration and gravity do too! Bright road ahead!
 
+5/27/2021
+
+We worked on slowing down the car when the keybind for accelerate is released. We also worked on gravity for the ball.
 
 Development Log (Emmanuel)
 --------------------------
@@ -32,7 +35,7 @@ Development Log (Emmanuel)
 
 During class time, worked with Harry in the breakout room on setting up our basic structure. We succeeded in fitting our 4 files with the methods and instance variables, as well as their constructors, that we outlined in our UML. Long road ahead is right!
 
-5/26/21
+5/26/2021
 
 Our goal was to get the cars moving, and it was done. Harry drew the cars and wrote inside the car class to change the dx and dy values of the cars, and I went into the RocketLeague class and initialized a ball and two cars, and then worked on the gravity and keybinds controling upward and sideward movement of cars. We came together and fixed up our gravity issues, and at the end of the day, the cars now have fully functional 2D movement.
 
