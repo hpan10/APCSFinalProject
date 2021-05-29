@@ -29,6 +29,10 @@ We worked on the display and movement of the cars. Keybinds are working and acce
 
 We worked on slowing down the car when the keybind for accelerate is released. We also worked on gravity for the ball.
 
+5/29/2021
+
+We brought some color to the displays. Established walls, timer and scoreboard. Cars can now touch each other. Attempted deceleration but left a lot to be desired.
+
 Development Log (Emmanuel)
 --------------------------
 5/25/2021
@@ -39,10 +43,10 @@ During class time, worked with Harry in the breakout room on setting up our basi
 
 Our goal was to get the cars moving, and it was done. Harry drew the cars and wrote inside the car class to change the dx and dy values of the cars, and I went into the RocketLeague class and initialized a ball and two cars, and then worked on the gravity and keybinds controling upward and sideward movement of cars. We came together and fixed up our gravity issues, and at the end of the day, the cars now have fully functional 2D movement.
 
-5/27/21
+5/27/2021
 
 Today in class, I focused on refining movement. I made it so it was not tap to move, but press and hold to move, and I also eliminated double jumping. I then worked both on decelleration so it isnt a sudden stop, and implementing walls. Towards the end of class, Harry discovered a bug where pressing left and right would cause the speed to skyrocket, so those three things will be next session's goals.
 
-5/29/21
+5/29/2021
 
 In this session, I added bumping, where cars don't just pass through each other, and instead collide. I also added boundaries so the cars won't fly off of the map. We then worked together on adding acceleration and deccelleration to cars, and experimented with removing our key released method, but couldn't come up with a concrete solution.
