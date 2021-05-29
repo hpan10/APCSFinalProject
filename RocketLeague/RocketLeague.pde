@@ -55,6 +55,23 @@ void move() {
       b1.y = 600 - b1.radius;
     }
   }
+  if (p1.x <=20) {
+    
+    p1.x = 25;
+    p1.dx = 0;
+  }
+  if (p2.x <=20) {
+    p2.x = 25;
+    p2.dx = 0;
+  }
+  if (p1.x >= 1590) {
+    p1.x = 1580;
+    p1.dx = 0;
+  }
+  if (p2.x >= 1590) {
+    p2.x = 1580;
+    p2.dx = 0;
+  }
 }
 
 void keyPressed() {
