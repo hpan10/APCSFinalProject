@@ -90,7 +90,24 @@ void move() {
       p1.x = p1.x - 5;
       p2.x = p2.x +5;
     }
-    
+    if (key != 'A' && key != 'D' && key != 'a' && key != 'd') {
+      if (p1.dx > 0) {
+        p1.drive(-width/3200);
+      }
+      if (p1.dx < 0) {
+        p1.drive(width/3200);
+      }
+      
+    }
+    if (keyCode != 38 && keyCode != 39 ) {
+      if (p2.dx > 0) {
+        p2.drive(-width/320);
+      }
+      if (p2.dx < 0) {
+        p2.drive(width/300);
+      }
+      
+    }
     
     
     
@@ -99,11 +116,11 @@ void move() {
 
 void keyPressed() {
   if ((key == 'a' || key == 'A')) {
-    if (p1.dx >=0) {
-    p1.drive((int)p1.dx-10);
+    if (p1.dx >=-width/300) {
+    p1.drive(-width/1600);
     }
   }
-  else if ((key == 'd' || key == 'D')) {
+   if ((key == 'd' || key == 'D')) {
     if (p1.dx <=0) {
     p1.drive((int)p1.dx+10);
     }
@@ -134,32 +151,6 @@ void keyPressed() {
   if (key == '/' || key == '?') {
     p2.boost();
   }
-  
-}
-void keyReleased() {
-  if (key == 'a' || key == 'A') {
-    if (p1.dx < 0) {
-    p1.drive(10);
-    }
-  }
-  if (key == 'd' || key == 'D') {
-    if (p1.dx > 0) {
-    p1.drive(-10);
-    }
-  }
-  
-  
-  if (keyCode == 37) {
-    if (p2.dx < 0) {
-    p2.drive(10);
-    }
-  }
-  if (keyCode == 39) {
-        if (p2.dx > 0) {
-    p2.drive(-10);
-    }
-  }
-  
   
 }
 

@@ -21,12 +21,12 @@ public class Car {
     
   }
   
-  void drive(int acceleration) {
+  void drive(float acceleration) {
     dx += acceleration;
   }
   
   void jump() {
-    dy -= 49;
+    dy -= height/18;
     inAir = true;
   }
   
