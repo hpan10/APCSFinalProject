@@ -1,21 +1,26 @@
 Car p1;
 Car p2;
 Ball b1;
+ScoreboardAndTimer t1;
+long millis;
 
 void setup() {
   size(1600, 900);
   p1 = new Car(100,300,0);
- p2 = new Car(800,300,180);
- b1 = new Ball(50);
-
+  p2 = new Car(800,300,180);
+  b1 = new Ball(50);
+  t1 = new ScoreboardAndTimer();
+  millis = System.currentTimeMillis();
 }
 
 void draw() {
+  tick();
   move();
   background(255);
   p1.display();
   p2.display();
   b1.display();
+  t1.display();
 }
 
 void background() {
@@ -141,5 +146,6 @@ void keyReleased() {
 }
 
 void tick() {
-  
+  long nowMillis = System.currentTimeMillis();
+  t1.time = 300 - (int)(nowMillis - millis) / 1000;
 }
