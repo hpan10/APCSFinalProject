@@ -32,9 +32,8 @@ void reset() {
 }
 
 void move() {
-  //while (b1.y > 300) {
-  //  b1.y--;
-  //}
+  if (p1.y < 600) p1.inAir = true;
+  if (p2.y < 600) p2.inAir = true;
   if (p1.inAir) p1.dy += 4.9;
   else {
     if (p1.dx >= -width/300 && p1.left) {
@@ -53,12 +52,12 @@ void move() {
       p2.drive((float)width/10000);
     }
   }
-  if (p1.y > 600) {
+  if (p1.y >= 600) {
     p1.dy = 0;
     p1.y = 600;
     p1.inAir = false;
   }
-  if (p2.y > 600) {
+  if (p2.y >= 600) {
     p2.dy = 0;
     p2.y = 600;
     p2.inAir = false;
@@ -96,7 +95,9 @@ void move() {
   if (Math.abs(p1.x-p2.x) <= p1.size && Math.abs(p1.y-p2.y) <= p1.size) {
     float temp = p1.dx;
     p1.dx = p2.dx;
+    p1.dy -= (float)height/90 * Math.abs(p2.dx/2);
     p2.dx = temp;
+    p2.dy -= (float)height/90 * Math.abs(temp/2);
     if (p1.x > p2.x) {
       p1.x = p1.x + 5;
       p2.x = p2.x -5;
