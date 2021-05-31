@@ -5,6 +5,7 @@ public class Car {
   boolean inAir;
   float angle; 
   color c;
+  boolean left, right;
   
   Car(float x, float y, int angle, color c) {
     this.x = x;
@@ -15,6 +16,8 @@ public class Car {
     dy = 0;
     size = 20;
     this.c = c;
+    left = false;
+    right = false;
   }
   
   void boost() {
