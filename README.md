@@ -33,6 +33,11 @@ We worked on slowing down the car when the keybind for accelerate is released. W
 
 We brought some color to the displays. Established walls, timer and scoreboard. Cars can now touch each other. Attempted deceleration but left a lot to be desired.
 
+6/1/2021
+
+We further improved collisions, making the "jump" a little more accurate in relation to speed and direction. We weakened gravity and are now working on a rudimentary background.
+
+
 Development Log (Emmanuel)
 --------------------------
 5/25/2021
