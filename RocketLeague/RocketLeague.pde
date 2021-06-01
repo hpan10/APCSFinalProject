@@ -6,25 +6,25 @@ long millis;
 
 void setup() {
   size(1600, 900);
-  p1 = new Car(width/4 ,600,0, color(0, 0, 255));
-  p2 = new Car(3 * width/4,600,180, color (255, 140, 0));
+  p1 = new Car((float)width/5 , 6 * (float)width/16,0, color(0, 0, 255));
+  p2 = new Car(4 * (float)width/5,6 * (float)width/16,180, color (255, 140, 0));
   b1 = new Ball(50);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
 }
 
+//void background() {
+//  for (float x = 
+//}
+
 void draw() {
   tick();
-  move();
   background(255);
   p1.display();
   p2.display();
   b1.display();
   t1.display();
-}
-
-void background() {
-  
+  move();
 }
 
 void reset() {
@@ -32,9 +32,10 @@ void reset() {
 }
 
 void move() {
+  System.out.println(p1.dy);
   if (p1.y < 600) p1.inAir = true;
   if (p2.y < 600) p2.inAir = true;
-  if (p1.inAir) p1.dy += 4.9;
+  if (p1.inAir) p1.dy += height/900;
   else {
     if (p1.dx >= -width/300 && p1.left) {
       p1.drive((float)-width/10000);
@@ -43,7 +44,7 @@ void move() {
       p1.drive((float)width/10000);
     }
   }
-  if (p2.inAir == true) p2.dy += 4.9;
+  if (p2.inAir) p2.dy += height/900;
   else {
     if (p2.dx >= -width/300 && p2.left) {
       p2.drive((float)-width/10000);
@@ -94,17 +95,43 @@ void move() {
   }
   if (Math.abs(p1.x-p2.x) <= p1.size && Math.abs(p1.y-p2.y) <= p1.size) {
     float temp = p1.dx;
-    p1.dx = p2.dx;
-    p1.dy -= (float)height/90 * Math.abs(p2.dx/2);
-    p2.dx = temp;
-    p2.dy -= (float)height/90 * Math.abs(temp/2);
-    if (p1.x > p2.x) {
-      p1.x = p1.x + 5;
-      p2.x = p2.x -5;
+    if (p1.dx > .5 && p2.dx > .5) {
+      if (p2.x > p1.x) {
+        p2.dy -= (float)height/180 * Math.abs(p1.dx - p2.dx);
+        p1.dx -= p2.dx;
+        p2.dx += temp;
+      }
+      else {
+        p1.dy -= (float)height/180 * Math.abs(p2.dx - p1.dx);
+        p1.dx += p2.dx;
+        p2.dx -= temp;
+      }
+    }
+    else if (p1.dx < -.5 && p2.dx < -.5) {
+      if (p2.x < p1.x) {
+        p2.dy -= (float)height/180 * Math.abs(p1.dx - p2.dx);
+        p1.dx -= p2.dx;
+        p2.dx += temp;
+      }
+      else {
+        p1.dy -= (float)height/180 * Math.abs(p2.dx - p1.dx);
+        p1.dx += p2.dx;
+        p2.dx -= temp;
+      }
     }
     else {
-      p1.x = p1.x - 5;
-      p2.x = p2.x +5;
+      p1.dy -= (float)height/180 * Math.abs(p2.dx/1.5);
+      p2.dy -= (float)height/180 * Math.abs(p1.dx/1.5);
+      p1.dx = p2.dx;
+      p2.dx = temp;
+    }
+    if (p1.x > p2.x) {
+      p1.x = p1.x + (float)width/320;
+      p2.x = p2.x - (float)width/320;
+    }
+    else {
+      p1.x = p1.x - (float)width/320;
+      p2.x = p2.x + (float)width/320;
     }
   }
   if (!p1.inAir) p1.dx /= 1.01;

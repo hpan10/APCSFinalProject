@@ -29,7 +29,7 @@ public class Car {
   }
   
   void jump() {
-    dy -= height/18;
+    dy -= height/45;
     inAir = true;
   }
   
