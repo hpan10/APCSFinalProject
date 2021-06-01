@@ -5,7 +5,7 @@ ScoreboardAndTimer t1;
 long millis;
 
 void setup() {
-  size(1600, 900);
+  size(1920, 1080);
   p1 = new Car((float)width/5 , 6 * (float)width/16,0, color(0, 0, 255));
   p2 = new Car(4 * (float)width/5,6 * (float)width/16,180, color (255, 140, 0));
   b1 = new Ball(50);
@@ -24,55 +24,59 @@ void draw() {
   p2.display();
   b1.display();
   t1.display();
+  drawGoals();
   move();
 }
 void background() {
-background(255);
-fill(0,255,0);
-rect(0,600,1600,900);
-fill(51,255,248);
-rect(0,0,1600,600);
-fill(255);
-noStroke();
-rect(0,300,100,320,20);
-rect(80,300,100,600,20);
-rect(1600,300,1500,320,20);
-rect(1500,300,1520,600,20);
-stroke(255);
-strokeWeight(4);
-fill(0);
-line(50,300,100,350);
-line(0,300,100,400);
-line(0,350,100,450);
-line(0,400,100,500);
-line(0,450,100,550);
-line(0,500,100,600);
-line(0,550,50,600);
-line(50,300,0,350);
-line(100,300,0,400);
-line(100,350,0,450);
-line(100,400,0,500);
-line(100,450,0,550);
-line(100,500,0,600);
-line(100,550,50,600);
-line(1550,300,1500,350);
-line(1550,300,1600,350);
-line(1500,300,1600,400);
-line(1500,350,1600,450);
-line(1500,400,1600,500);
-line(1500,450,1600,550);
-line(1500,500,1600,600);
-line(1500,500,1500,600);
-line(1500,550,1550,600);
-line(1550,600,1600,550);
-line(1600,300,1500,400);
-line(1600,350,1500,450);
-line(1600,400,1500,500);
-line(1600,450,1500,550);
-line(1600,500,1500,600);
+  background(255);
+  fill(0,255,0);
+  rect(0,2 * height/3,width,height);
+  fill(51,255,248);
+  rect(0,0,width,2 * height/3);
+}
 
-strokeWeight(1);
-stroke(1);
+void drawGoals() {
+  fill(255);
+  noStroke();
+  rect(-width/16,height/3 - height/150,width/16 + width/200,16 * height/45 - height/150,width/80);
+  rect(width/20 + width/200,height/3,width/16 + width/200,2 * height/3 + height/50,width/80);
+  rect(width + width/16,height/3 - height/150,15 * width/16 - width/200,16 * height/45 - height/150,width/80);
+  rect(19 * width/20 - width/200,height/3,15 * width/16 - width/200,2 * height/3 + height/50,width/80);
+  stroke(255);
+  strokeWeight(4);
+  fill(0);
+  line(width/32,height/3 + height/60,width/16,7 * height/18 + height/60);
+  line(0,height/3 + height/60,width/16,4 * height/9 + height/60);
+  line(0,7 * height/18 + height/60,width/16,height/2 + height/60);
+  line(0,4 * height/9 + height/60,width/16,5 * height/9 + height/60);
+  line(0,height/2 + height/60,width/16,11 * height/18 + height/60);
+  line(0,5 * height/9 + height/60,width/16,2 * height/3 + height/60);
+  line(0,11 * height/18 + height/60,width/32,2 * height/3 + height/60);
+  line(width/32,height/3 + height/60,0,7 * height/18 + height/60);
+  line(width/16,height/3 + height/60,0,4 * height/9 + height/60);
+  line(width/16,7 * height/18 + height/60,0,height/2 + height/60);
+  line(width/16,4 * height/9 + height/60,0,5 * height/9 + height/60);
+  line(width/16,height/2 + height/60,0,11 * height/18 + height/60);
+  line(width/16,5 * height/9 + height/60,0,2 * height/3 + height/60);
+  line(width/16,11 * height/18 + height/60,width/32,2 * height/3 + height/60);
+  line(31 * width/32,height/3 + height/60,15 * width/16,7 * height/18 + height/60);
+  line(31 * width/32,height/3 + height/60,width,7 * height/18 + height/60);
+  line(15 * width/16,height/3 + height/60,width,4 * height/9 + height/60);
+  line(15 * width/16,7 * height/18 + height/60,width,height/2 + height/60);
+  line(15 * width/16,4 * height/9 + height/60,width,5 * height/9 + height/60);
+  line(15 * width/16,height/2 + height/60,width,11 * height/18 + height/60);
+  line(15 * width/16,5 * height/9 + height/60,width,2 * height/3 + height/60);
+  line(15 * width/16,5 * height/9 + height/60,15 * width/16,2 * height/3 + height/60);
+  line(15 * width/16,11 * height/18 + height/60,31 * width/32,2 * height/3 + height/60);
+  line(31 * width/32,2 * height/3 + height/60,width,11 * height/18 + height/60);
+  line(width,height/3 + height/60,15 * width/16,4 * height/9 + height/60);
+  line(width,7 * height/18 + height/60,15 * width/16,height/2 + height/60);
+  line(width,4 * height/9 + height/60,15 * width/16,5 * height/9 + height/60);
+  line(width,height/2 + height/60,15 * width/16,11 * height/18 + height/60);
+  line(width,5 * height/9 + height/60,15 * width/16,2 * height/3 + height/60);
+  
+  strokeWeight(1);
+  stroke(1);
 }
 
 void reset() {
@@ -80,106 +84,100 @@ void reset() {
 }
 
 void move() {
-  System.out.println(p1.dy);
-  if (p1.y < 600) p1.inAir = true;
-  if (p2.y < 600) p2.inAir = true;
-  if (p1.inAir) p1.dy += height/900;
+  if (p1.y < 2 * height/3) p1.inAir = true;
+  if (p2.y < 2 * height/3) p2.inAir = true;
+  if (p1.inAir) p1.dy += (float)height/900;
   else {
-    if (p1.dx >= -width/300 && p1.left) {
+    if (p1.dx >= (float)-width/300 && p1.left) {
       p1.drive((float)-width/10000);
     }
-    if (p1.dx <= width/300 && p1.right) {
+    if (p1.dx <= (float)width/300 && p1.right) {
       p1.drive((float)width/10000);
     }
   }
-  if (p2.inAir) p2.dy += height/900;
+  if (p2.inAir) p2.dy += (float)height/900;
   else {
-    if (p2.dx >= -width/300 && p2.left) {
+    if (p2.dx >= (float)-width/300 && p2.left) {
       p2.drive((float)-width/10000);
     }
-    if (p2.dx <= width/300 && p2.right) {
+    if (p2.dx <= (float)width/300 && p2.right) {
       p2.drive((float)width/10000);
     }
   }
-  if (p1.y >= 600) {
+  if (p1.y >= 2 * height/3) {
     p1.dy = 0;
-    p1.y = 600;
+    p1.y = 2 * height/3;
     p1.inAir = false;
   }
-  if (p2.y >= 600) {
+  if (p2.y >= 2 * height/3) {
     p2.dy = 0;
-    p2.y = 600;
+    p2.y = 2 * height/3;
     p2.inAir = false;
   }
-  if (b1.y < 600 - b1.radius) {
+  if (b1.y < 2 * height/3 - b1.radius) {
     b1.dy += 1;
   }
-  if (b1.y > 600 - b1.radius) {
+  if (b1.y > 2 * height/3 - b1.radius) {
     if (b1.dy > 2) {
-      b1.y = 600 - b1.radius;
+      b1.y = 2 * height/3 - b1.radius;
       b1.dy = -(b1.dy / 2);
     }
     else {
       b1.dy = 0;
-      b1.y = 600 - b1.radius;
+      b1.y = 2 * height/3 - b1.radius;
     }
   }
-  if (p1.x <=20) {
-    
-    p1.x = 25;
-    p1.dx = 0;
+  if (p1.x < p1.size/2 || p1.x > width - p1.size/2) {
+    if (p1.x < p1.size/2) p1.x = p1.size/2;
+    else p1.x = width - p1.size/2;
+    p1.dx *= -1;
   }
-  if (p2.x <=20) {
-    p2.x = 25;
-    p2.dx = 0;
-  }
-  if (p1.x >= 1590) {
-    p1.x = 1580;
-    p1.dx = 0;
-  }
-  if (p2.x >= 1590) {
-    p2.x = 1580;
-    p2.dx = 0;
+  if (p2.x < p2.size/2 || p2.x > width - p2.size/2) {
+    if (p2.x < p2.size/2) p2.x = p2.size/2;
+    else p2.x = width-p2.size/2;
+    p2.dx *= -1;
   }
   if (Math.abs(p1.x-p2.x) <= p1.size && Math.abs(p1.y-p2.y) <= p1.size) {
+    if (p1.y != p2.y) {
+      if (p1.x > p2.x) {
+        p1.x += p1.size/2;
+        p2.x -= p2.size/2;
+      }
+      else {
+        p1.x -= p1.size/2;
+        p2.x += p2.size/2;
+      }
+    }
     float temp = p1.dx;
     if (p1.dx > .5 && p2.dx > .5) {
       if (p2.x > p1.x) {
-        p2.dy -= (float)height/180 * Math.abs(p1.dx - p2.dx);
+        p2.dy -= (float)height/360 * Math.abs(p1.dx - p2.dx);
         p1.dx -= p2.dx;
         p2.dx += temp;
       }
       else {
-        p1.dy -= (float)height/180 * Math.abs(p2.dx - p1.dx);
+        p1.dy -= (float)height/360 * Math.abs(p2.dx - p1.dx);
         p1.dx += p2.dx;
         p2.dx -= temp;
       }
     }
     else if (p1.dx < -.5 && p2.dx < -.5) {
       if (p2.x < p1.x) {
-        p2.dy -= (float)height/180 * Math.abs(p1.dx - p2.dx);
+        p2.dy -= (float)height/360 * Math.abs(p1.dx - p2.dx);
         p1.dx -= p2.dx;
         p2.dx += temp;
       }
       else {
-        p1.dy -= (float)height/180 * Math.abs(p2.dx - p1.dx);
+        p1.dy -= (float)height/360 * Math.abs(p2.dx - p1.dx);
         p1.dx += p2.dx;
         p2.dx -= temp;
       }
     }
     else {
-      p1.dy -= (float)height/180 * Math.abs(p2.dx/1.5);
-      p2.dy -= (float)height/180 * Math.abs(p1.dx/1.5);
+      p1.dy -= (float)height/180 * Math.abs(p2.dx * 1600/width);
+      p2.dy -= (float)height/180 * Math.abs(p1.dx * 1600/width);
       p1.dx = p2.dx;
       p2.dx = temp;
-    }
-    if (p1.x > p2.x) {
-      p1.x = p1.x + (float)width/320;
-      p2.x = p2.x - (float)width/320;
-    }
-    else {
-      p1.x = p1.x - (float)width/320;
-      p2.x = p2.x + (float)width/320;
     }
   }
   if (!p1.inAir) p1.dx /= 1.01;
@@ -187,7 +185,6 @@ void move() {
 }
 
 void keyPressed() {
-  System.out.println(keyCode);
   if ((key == 'a' || key == 'A')) p1.left = true;
   if ((key == 'd' || key == 'D')) p1.right = true;
   if (key == 'w' || key == 'W') {

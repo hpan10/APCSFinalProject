@@ -14,7 +14,7 @@ public class Car {
     inAir = false;
     dx = 0;
     dy = 0;
-    size = 20;
+    size = width/32;
     this.c = c;
     left = false;
     right = false;
