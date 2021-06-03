@@ -114,6 +114,12 @@ void move() {
       else p2.angle = 180;
     }
   }
+  if (p1.y <= 0) {
+    p1.dy = p1.dy*-1;
+  }
+  if (p2.y <= 0) {
+    p2.dy = p2.dy*-1;
+  }
   if (p1.y >= 2 * (float)height/3) {
     p1.dy = 0;
     p1.y = 2 * (float)height/3;
