@@ -3,7 +3,7 @@ public class Car {
   float x, y, dx, dy;
   float size;
   boolean inAir;
-  float angle; 
+  int angle; 
   color c;
   boolean left, right, boosting;
   
@@ -41,8 +41,8 @@ public class Car {
     if (boosting) {
       fill(c);
       for (int i = 2; i <= 8; i++) {
-        ellipse(x - (cos(angle) * size/4 * i), y + size/8, size/8, size/8);
-        ellipse(x - (cos(angle) * size/4 * i), y - size/8, size/8, size/8);
+        ellipse(x - (cos(radians(angle)) * size/4 * i), y + size/8, size/8, size/8);
+        ellipse(x - (cos(radians(angle)) * size/4 * i), y - size/8, size/8, size/8);
       }
     }
     fill(127);
