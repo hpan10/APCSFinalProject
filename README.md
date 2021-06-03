@@ -55,3 +55,7 @@ Today in class, I focused on refining movement. I made it so it was not tap to m
 5/29/2021
 
 In this session, I added bumping, where cars don't just pass through each other, and instead collide. I also added boundaries so the cars won't fly off of the map. We then worked together on adding acceleration and deccelleration to cars, and experimented with removing our key released method, but couldn't come up with a concrete solution.
+
+6/1/2021
+
+Today, I focused a lot on aesthetics, and making it look more like a stadium. It's not quite there yet, there's a blue sky and grass. I experimented with spotlights and people in some stands, but that didn't work out that well, so I'll try that again in the future. I did spend some time on making goals and the nets in the background took some time as well. The next step would be to get that functional.
