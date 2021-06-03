@@ -2,6 +2,7 @@ public class Ball {
   
   float x, y, dx, dy;
   float radius;
+  boolean inAir;
 
   Ball(float radius) {
     this.radius = radius;

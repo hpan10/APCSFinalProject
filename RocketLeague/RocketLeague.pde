@@ -23,6 +23,7 @@ void draw() {
   drawGoals();
   move();
 }
+
 void background() {
   background(255);
   fill(0,255,0);
@@ -131,16 +132,18 @@ void move() {
     p2.inAir = false;
   }
   if (b1.y < 2 * height/3 - b1.radius + p1.size/2) {
+    b1.inAir = true;
     b1.dy += (float)height/900;
   }
   if (b1.y > 2 * (float)height/3 - b1.radius + p1.size/2) {
-    if (b1.dy > 2) {
+    if (Math.abs(b1.dy) > (float)height/450) {
       b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
-      b1.dy = -(b1.dy / 1.5);
+      b1.dy = -Math.abs(b1.dy / 1.5);
     }
     else {
       b1.dy = 0;
       b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
+      b1.inAir = false;
     }
   }
   if (p1.x < p1.size/2 || p1.x > width - p1.size/2) {
@@ -198,6 +201,55 @@ void move() {
   }
   if (!p1.inAir) p1.dx /= 1.01;
   if (!p2.inAir) p2.dx /= 1.01;
+  if (Math.pow(b1.x-p1.x, 2) + Math.pow(b1.y-p1.y, 2) <= Math.pow(b1.radius + p1.size/2, 2)) {
+    float tempX = b1.dx;
+    float tempY = b1.dy;
+    if (p1.y < b1.y - 2 * b1.radius/3) {
+      if (b1.inAir) {
+        b1.dy += Math.abs(p1.dy);
+        b1.dx += Math.abs(p1.dx/3);
+      }
+      else {
+        if (p1.x < b1.x) {
+          b1.dx += p1.dy;
+          b1.dy += -Math.abs(p1.dx);
+        }
+        else {
+          b1.dx += -p1.dy;
+          b1.dy += -Math.abs(p1.dx);
+        }
+      }
+      p1.dy += tempY;
+      p1.dx /= 2;
+    }
+    else if (p1.y < b1.y + b1.radius/3) {
+      b1.dx = p1.dx/1.5;
+      b1.dy += -Math.abs(p1.dy/2);
+      p1.dx -= Math.abs(tempX/2);
+      p1.dy /= 1.5;
+    }
+    else if (p1.y < b1.y - b1.radius/3) {
+      b1.dx = p1.dx;
+      p1.dx -= Math.abs(tempX/1.5);
+    }
+    else if (p1.y < b1.y - 2 * b1.radius/3) {
+      b1.dx = p1.dx/1.5;
+      b1.dy = p1.dx;
+      p1.dx = tempX/2;
+      p1.dy /= 1.5;
+    }
+    else {
+      b1.dx = p1.dx/5;
+      b1.dy = -3 * Math.abs(p1.dx) + p1.dy;
+      p1.dy += Math.abs(tempY);;
+      p1.dx /= 1.1;
+    }
+  }
+  if (b1.x < b1.radius || b1.x > width - b1.radius) {
+    if (b1.x < b1.radius) b1.x = b1.radius;
+    else b1.x = width-b1.radius;
+    b1.dx *= -1;
+  }
 }
 
 void keyPressed() {
