@@ -5,7 +5,7 @@ public class Car {
   boolean inAir;
   float angle; 
   color c;
-  boolean left, right;
+  boolean left, right, boosting;
   
   Car(float x, float y, int angle, color c) {
     this.x = x;
@@ -21,7 +21,8 @@ public class Car {
   }
   
   void boost() {
-    
+    dx += (float)width/8000 * cos(angle);
+    dy += (float)width/8000 * sin(angle);
   }
   
   void drive(float acceleration) {
@@ -37,6 +38,13 @@ public class Car {
     x += dx;
     y += dy;
     ellipseMode(CENTER);
+    if (boosting) {
+      fill(c);
+      for (int i = 2; i <= 8; i++) {
+        ellipse(x - (cos(angle) * size/4 * i), y + size/8, size/8, size/8);
+        ellipse(x - (cos(angle) * size/4 * i), y - size/8, size/8, size/8);
+      }
+    }
     fill(127);
     ellipse(x - size/4, y + size/2, size/5, size/5);
     ellipse(x + size/4, y + size/2, size/5, size/5);

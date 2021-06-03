@@ -5,17 +5,13 @@ ScoreboardAndTimer t1;
 long millis;
 
 void setup() {
-  size(1920, 1080);
+  size(1600, 900);
   p1 = new Car((float)width/5 , 6 * (float)width/16,0, color(0, 0, 255));
   p2 = new Car(4 * (float)width/5,6 * (float)width/16,180, color (255, 140, 0));
-  b1 = new Ball(50);
+  b1 = new Ball((float)height/18);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
 }
-
-//void background() {
-//  for (float x = 
-//}
 
 void draw() {
   tick();
@@ -86,45 +82,59 @@ void reset() {
 void move() {
   if (p1.y < 2 * height/3) p1.inAir = true;
   if (p2.y < 2 * height/3) p2.inAir = true;
+  if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
+  if (p2.boosting && Math.abs(p2.dx) < (float)width/200) p2.boost();
   if (p1.inAir) p1.dy += (float)height/900;
   else {
     if (p1.dx >= (float)-width/300 && p1.left) {
       p1.drive((float)-width/10000);
+      p1.angle = 180;
     }
     if (p1.dx <= (float)width/300 && p1.right) {
       p1.drive((float)width/10000);
+      p1.angle = 0;
+    }
+    if (p1.left && p1.right) {
+      if (p1.dx > 0) p1.angle = 0;
+      else p1.angle = 180;
     }
   }
   if (p2.inAir) p2.dy += (float)height/900;
   else {
     if (p2.dx >= (float)-width/300 && p2.left) {
       p2.drive((float)-width/10000);
+      p2.angle = 180;
     }
     if (p2.dx <= (float)width/300 && p2.right) {
       p2.drive((float)width/10000);
+      p2.angle = 0;
+    }
+    if (p2.left && p2.right) {
+      if (p2.dx > 0) p2.angle = 0;
+      else p2.angle = 180;
     }
   }
-  if (p1.y >= 2 * height/3) {
+  if (p1.y >= 2 * (float)height/3) {
     p1.dy = 0;
-    p1.y = 2 * height/3;
+    p1.y = 2 * (float)height/3;
     p1.inAir = false;
   }
-  if (p2.y >= 2 * height/3) {
+  if (p2.y >= 2 * (float)height/3) {
     p2.dy = 0;
-    p2.y = 2 * height/3;
+    p2.y = 2 * (float)height/3;
     p2.inAir = false;
   }
-  if (b1.y < 2 * height/3 - b1.radius) {
-    b1.dy += 1;
+  if (b1.y < 2 * height/3 - b1.radius + p1.size/2) {
+    b1.dy += (float)height/900;
   }
-  if (b1.y > 2 * height/3 - b1.radius) {
+  if (b1.y > 2 * (float)height/3 - b1.radius + p1.size/2) {
     if (b1.dy > 2) {
-      b1.y = 2 * height/3 - b1.radius;
-      b1.dy = -(b1.dy / 2);
+      b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
+      b1.dy = -(b1.dy / 1.5);
     }
     else {
       b1.dy = 0;
-      b1.y = 2 * height/3 - b1.radius;
+      b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
     }
   }
   if (p1.x < p1.size/2 || p1.x > width - p1.size/2) {
@@ -192,9 +202,7 @@ void keyPressed() {
     p1.jump();
     }
   }
-  if (keyCode == 32) {
-    p1.boost();
-  }
+  if (keyCode == 32) p1.boosting = true;
   if (keyCode == 38) {
     if (!p2.inAir) {
     p2.jump();
@@ -202,9 +210,7 @@ void keyPressed() {
   }
   if (keyCode == 37) p2.left = true;
   if (keyCode == 39) p2.right = true;
-  if (key == '/' || key == '?') {
-    p2.boost();
-  }
+  if (key == '/' || key == '?') p2.boosting = true;
   
 }
 
@@ -213,6 +219,8 @@ void keyReleased() {
   if ((key == 'd' || key == 'D')) p1.right = false;
   if (keyCode == 37) p2.left = false;
   if (keyCode == 39) p2.right = false;
+  if (keyCode == 32) p1.boosting = false;
+  if (key == '/' || key == '?') p2.boosting = false;
 }
 
 void tick() {

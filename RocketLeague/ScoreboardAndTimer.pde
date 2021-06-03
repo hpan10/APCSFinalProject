@@ -7,7 +7,7 @@ public class ScoreboardAndTimer {
     time = 300;
     p1Goals = 0;
     p2Goals = 0;
-    textSize(height/15);
+    textSize((float)width/26);
   }
   
   void display() {
