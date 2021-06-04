@@ -37,6 +37,9 @@ We brought some color to the displays. Established walls, timer and scoreboard. 
 
 We further improved collisions, making the "jump" a little more accurate in relation to speed and direction. We weakened gravity and are now working on a rudimentary background.
 
+6/3/2021
+
+Started car-ball collisions, boosting, and car rotation. Very complicated stuff. We'll make it work soon enough.
 
 Development Log (Emmanuel)
 --------------------------
