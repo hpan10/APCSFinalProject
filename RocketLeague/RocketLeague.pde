@@ -225,53 +225,6 @@ void move() {
       b1.dy = -(Math.abs(p1.dx) * (float)width/480);
       p1.dx = tempDx/10;
     }
-    //if (p1.x < b1.x) b1.x = p1.x + p1.size/2 + b1.radius;
-    //else b1.x = p1.x - p1.size/2 - b1.radius;
-    //float tempX = b1.dx;
-    //float tempY = b1.dy;
-    //if (p1.y < b1.y - 2 * b1.radius/3) {
-    //  if (b1.inAir) {
-    //    b1.dy += Math.abs(p1.dy);
-    //    if (p1.x < b1.x) {
-    //      b1.dx += Math.abs(p1.dx/3);
-    //    }
-    //    else b1.dx -= Math.abs(p1.dx/3);
-    //  }
-    //  else {
-    //    if (p1.x < b1.x) {
-    //      b1.dx += 3 * p1.dy;
-    //      b1.dy -= Math.abs(p1.dx);
-    //    }
-    //    else {
-    //      b1.dx -= 3 * p1.dy;
-    //      b1.dy -= Math.abs(p1.dx);
-    //    }
-    //  }
-    //  p1.dy += tempY;
-    //  p1.dx /= 2;
-    //}
-    //else if (p1.y < b1.y + b1.radius/3) {
-    //  b1.dx = p1.dx/1.5;
-    //  b1.dy += -Math.abs(p1.dy/2);
-    //  p1.dx -= Math.abs(tempX/2);
-    //  p1.dy /= 1.5;
-    //}
-    //else if (p1.y < b1.y - b1.radius/3) {
-    //  b1.dx = p1.dx;
-    //  p1.dx -= Math.abs(tempX/1.5);
-    //}
-    //else if (p1.y < b1.y - 2 * b1.radius/3) {
-    //  b1.dx = p1.dx/1.5;
-    //  b1.dy = p1.dx;
-    //  p1.dx = tempX/2;
-    //  p1.dy /= 1.5;
-    //}
-    //else {
-    //  b1.dx = p1.dx/5;
-    //  b1.dy = -3 * Math.abs(p1.dx) + p1.dy;
-    //  p1.dy += Math.abs(tempY);;
-    //  p1.dx /= 1.1;
-    //}
   }
   if (b1.x < b1.radius || b1.x > width - b1.radius) {
     if (b1.x < b1.radius) b1.x = b1.radius;
