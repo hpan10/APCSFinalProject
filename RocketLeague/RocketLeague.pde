@@ -210,8 +210,14 @@ void move() {
       float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
       float velocityCar  = sqrt((p1.dx * p1.dx) + (p1.dy * p1.dy));
       if (b1.dx > 0 && p1.dx > 0 || b1.dx < 0 && p1.dx < 0) {
-        b1.dx = p1.dx * 2 - cos(currentBallAngle) * velocityCar;
-        b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        if (p1.x < b1.x) {
+          b1.dx = Math.abs(p1.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+        else {
+          b1.dx = -Math.abs(p1.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
       }
       else {
         b1.dx = p1.dx * 2 - cos(currentBallAngle - currentCarAngle) * velocityCar;
@@ -225,7 +231,54 @@ void move() {
       b1.dy = -(Math.abs(p1.dx) * (float)width/480);
       p1.dx = tempDx/10;
     }
+    if (b1.x < p1.x) {
+      if (b1.y > p1.y) b1.x = p1.x - p1.size/2 - b1.radius;
+      else b1.dx -= 1;
+    }
+    else {
+      if (b1.y > p1.y) b1.x = p1.x + p1.size/2 + b1.radius;
+      else b1.dx += 1;
+    }
   }
+  if (Math.pow(b1.x-p2.x, 2) + Math.pow(b1.y-p2.y, 2) <= Math.pow(b1.radius + p2.size/2, 2)) {
+    if (b1.inAir) {
+      float currentBallAngle = atan2(b1.dy, b1.dx);
+      float currentCarAngle  = atan2(p2.dy, p2.dx);
+      float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
+      float velocityCar  = sqrt((p2.dx * p2.dx) + (p2.dy * p2.dy));
+      if (b1.dx > 0 && p2.dx > 0 || b1.dx < 0 && p2.dx < 0) {
+        if (p2.x < b1.x) {
+          b1.dx = Math.abs(p2.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+        else {
+          b1.dx = -Math.abs(p2.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+      }
+      else {
+        b1.dx = p2.dx * 2 - cos(currentBallAngle - currentCarAngle) * velocityCar;
+        b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle - currentCarAngle) * velocityCar;
+        p2.dx += cos(currentBallAngle) * velocityBall/10;
+      }
+    }
+    else {
+      float tempDx = b1.dx;
+      b1.dx = p2.dx * 2;
+      b1.dy = -(Math.abs(p2.dx) * (float)width/480);
+      p2.dx = tempDx/10;
+    }
+    if (b1.x < p2.x) {
+      if (b1.y > p2.y) b1.x = p2.x - p2.size/2 - b1.radius;
+      else b1.dx -= 1;
+    }
+    else {
+      if (b1.y > p2.y) b1.x = p2.x + p2.size/2 + b1.radius;
+      else b1.dx += 1;
+    }
+
+  }
+
   if (b1.x < b1.radius || b1.x > width - b1.radius) {
     if (b1.x < b1.radius) b1.x = b1.radius;
     else b1.x = width-b1.radius;
