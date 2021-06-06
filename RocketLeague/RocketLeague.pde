@@ -6,8 +6,8 @@ long millis;
 
 void setup() {
   size(1600, 900);
-  p1 = new Car((float)width/5 , 6 * (float)width/16,0, color(0, 0, 255));
-  p2 = new Car(4 * (float)width/5,6 * (float)width/16,180, color (255, 140, 0));
+  p1 = new Car((float)width/5 , 6 * (float)width/16,1, color(0, 0, 255));
+  p2 = new Car(4 * (float)width/5,6 * (float)width/16,-1, color (255, 140, 0));
   b1 = new Ball((float)height/18);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
@@ -83,37 +83,34 @@ void reset() {
 void move() {
   if (p1.y < 2 * height/3) p1.inAir = true;
   if (p2.y < 2 * height/3) p2.inAir = true;
-  if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
-  if (p2.boosting && Math.abs(p2.dx) < (float)width/200) p2.boost();
-  if (p1.inAir) p1.dy += (float)height/900;
+  System.out.println(p1.angle);
+  if (p1.inAir) {
+    if (p1.left && !p1.right) p1.angle -= 3;
+    if (p1.right && !p1.left) p1.angle += 3;
+    p1.dy += (float)height/900;
+  }
   else {
     if (p1.dx >= (float)-width/300 && p1.left) {
       p1.drive((float)-width/10000);
-      p1.angle = 180;
+      if (!p1.right) p1.lastDirection = -1;
     }
     if (p1.dx <= (float)width/300 && p1.right) {
       p1.drive((float)width/10000);
-      p1.angle = 0;
+      if (!p1.left) p1.lastDirection = 1;
     }
-    if (p1.left && p1.right) {
-      if (p1.dx > 0) p1.angle = 0;
-      else p1.angle = 180;
-    }
+    p1.angle = 0;
   }
   if (p2.inAir) p2.dy += (float)height/900;
   else {
     if (p2.dx >= (float)-width/300 && p2.left) {
       p2.drive((float)-width/10000);
-      p2.angle = 180;
+      if (!p2.right) p2.lastDirection = -1;
     }
     if (p2.dx <= (float)width/300 && p2.right) {
       p2.drive((float)width/10000);
-      p2.angle = 0;
+      if (!p2.left) p2.lastDirection = 1;
     }
-    if (p2.left && p2.right) {
-      if (p2.dx > 0) p2.angle = 0;
-      else p2.angle = 180;
-    }
+    p2.angle = 0;
   }
   if (p1.y <= 0) {
     p1.dy = p1.dy*-1;
@@ -284,6 +281,8 @@ void move() {
     else b1.x = width-b1.radius;
     b1.dx *= -1;
   }
+  if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
+  if (p2.boosting && Math.abs(p2.dx) < (float)width/200) p2.boost();
 }
 
 void keyPressed() {
