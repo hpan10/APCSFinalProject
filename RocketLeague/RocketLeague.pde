@@ -115,6 +115,9 @@ void move() {
   if (p1.y <= 0) {
     p1.dy = p1.dy*-1;
   }
+  if (b1.y <= height/18) {
+    b1.dy = b1.dy*-1;
+  }
   if (p2.y <= 0) {
     p2.dy = p2.dy*-1;
   }
