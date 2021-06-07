@@ -81,6 +81,11 @@ void reset() {
 }
 
 void move() {
+  if (p1.y <= height/3 - 50 && p1.x <width/16) {
+    p1.dy = 0;
+    p1.y =  (float)height/3-50;
+    p1.inAir = false;
+  }
   if (p1.y < 2 * height/3) p1.inAir = true;
   if (p2.y < 2 * height/3) p2.inAir = true;
   System.out.println(p1.angle);
