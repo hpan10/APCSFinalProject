@@ -59,3 +59,7 @@ In this session, I added bumping, where cars don't just pass through each other,
 6/1/2021
 
 Today, I focused a lot on aesthetics, and making it look more like a stadium. It's not quite there yet, there's a blue sky and grass. I experimented with spotlights and people in some stands, but that didn't work out that well, so I'll try that again in the future. I did spend some time on making goals and the nets in the background took some time as well. The next step would be to get that functional.
+
+6/2/2021
+
+Today, my focus was on rotation. First, I added a ceiling, which was rather simple. Then, I worked on rotation. I didn't quite get it down, but I worked on a couple ideas. I tried to use the built in rotate() command, but that wouldn't work as it would do it too slowly, rotate it about the origin, and rotate the whole thing, instead of just one car. I used a unit circle next, but couldn't get anywhere with that.
