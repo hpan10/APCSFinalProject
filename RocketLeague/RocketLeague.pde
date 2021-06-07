@@ -6,8 +6,8 @@ long millis;
 
 void setup() {
   size(1600, 900);
-  p1 = new Car((float)width/5 , 6 * (float)width/16,0, color(0, 0, 255));
-  p2 = new Car(4 * (float)width/5,6 * (float)width/16,180, color (255, 140, 0));
+  p1 = new Car((float)width/5 , 6 * (float)width/16,1, color(0, 0, 255));
+  p2 = new Car(4 * (float)width/5,6 * (float)width/16,-1, color (255, 140, 0));
   b1 = new Ball((float)height/18);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
@@ -23,6 +23,7 @@ void draw() {
   drawGoals();
   move();
 }
+
 void background() {
   background(255);
   fill(0,255,0);
@@ -82,37 +83,34 @@ void reset() {
 void move() {
   if (p1.y < 2 * height/3) p1.inAir = true;
   if (p2.y < 2 * height/3) p2.inAir = true;
-  if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
-  if (p2.boosting && Math.abs(p2.dx) < (float)width/200) p2.boost();
-  if (p1.inAir) p1.dy += (float)height/900;
+  System.out.println(p1.angle);
+  if (p1.inAir) {
+    if (p1.left && !p1.right) p1.angle -= 3;
+    if (p1.right && !p1.left) p1.angle += 3;
+    p1.dy += (float)height/900;
+  }
   else {
     if (p1.dx >= (float)-width/300 && p1.left) {
       p1.drive((float)-width/10000);
-      p1.angle = 180;
+      if (!p1.right) p1.lastDirection = -1;
     }
     if (p1.dx <= (float)width/300 && p1.right) {
       p1.drive((float)width/10000);
-      p1.angle = 0;
+      if (!p1.left) p1.lastDirection = 1;
     }
-    if (p1.left && p1.right) {
-      if (p1.dx > 0) p1.angle = 0;
-      else p1.angle = 180;
-    }
+    p1.angle = 0;
   }
   if (p2.inAir) p2.dy += (float)height/900;
   else {
     if (p2.dx >= (float)-width/300 && p2.left) {
       p2.drive((float)-width/10000);
-      p2.angle = 180;
+      if (!p2.right) p2.lastDirection = -1;
     }
     if (p2.dx <= (float)width/300 && p2.right) {
       p2.drive((float)width/10000);
-      p2.angle = 0;
+      if (!p2.left) p2.lastDirection = 1;
     }
-    if (p2.left && p2.right) {
-      if (p2.dx > 0) p2.angle = 0;
-      else p2.angle = 180;
-    }
+    p2.angle = 0;
   }
   if (p1.y <= 0) {
     p1.dy = p1.dy*-1;
@@ -131,16 +129,19 @@ void move() {
     p2.inAir = false;
   }
   if (b1.y < 2 * height/3 - b1.radius + p1.size/2) {
+    b1.inAir = true;
     b1.dy += (float)height/900;
   }
   if (b1.y > 2 * (float)height/3 - b1.radius + p1.size/2) {
-    if (b1.dy > 2) {
+    if (Math.abs(b1.dy) > (float)height/300) {
       b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
-      b1.dy = -(b1.dy / 1.5);
+      b1.dy = -Math.abs(b1.dy / 1.5);
+      b1.dx /= 1.1;
     }
     else {
       b1.dy = 0;
       b1.y = 2 * (float)height/3 - b1.radius + p1.size/2;
+      b1.inAir = false;
     }
   }
   if (p1.x < p1.size/2 || p1.x > width - p1.size/2) {
@@ -198,6 +199,90 @@ void move() {
   }
   if (!p1.inAir) p1.dx /= 1.01;
   if (!p2.inAir) p2.dx /= 1.01;
+  if (!b1.inAir) b1.dx /= 1.01;
+  if (Math.pow(b1.x-p1.x, 2) + Math.pow(b1.y-p1.y, 2) <= Math.pow(b1.radius + p1.size/2, 2)) {
+    if (b1.inAir) {
+      float currentBallAngle = atan2(b1.dy, b1.dx);
+      float currentCarAngle  = atan2(p1.dy, p2.dx);
+      float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
+      float velocityCar  = sqrt((p1.dx * p1.dx) + (p1.dy * p1.dy));
+      if (b1.dx > 0 && p1.dx > 0 || b1.dx < 0 && p1.dx < 0) {
+        if (p1.x < b1.x) {
+          b1.dx = Math.abs(p1.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+        else {
+          b1.dx = -Math.abs(p1.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+      }
+      else {
+        b1.dx = p1.dx * 2 - cos(currentBallAngle - currentCarAngle) * velocityCar;
+        b1.dy = -(Math.abs(p1.dx) * (float)width/480) - sin(currentBallAngle - currentCarAngle) * velocityCar;
+        p1.dx += cos(currentBallAngle) * velocityBall/10;
+      }
+    }
+    else {
+      float tempDx = b1.dx;
+      b1.dx = p1.dx * 2;
+      b1.dy = -(Math.abs(p1.dx) * (float)width/480);
+      p1.dx = tempDx/10;
+    }
+    if (b1.x < p1.x) {
+      if (b1.y > p1.y) b1.x = p1.x - p1.size/2 - b1.radius;
+      else b1.dx -= 1;
+    }
+    else {
+      if (b1.y > p1.y) b1.x = p1.x + p1.size/2 + b1.radius;
+      else b1.dx += 1;
+    }
+  }
+  if (Math.pow(b1.x-p2.x, 2) + Math.pow(b1.y-p2.y, 2) <= Math.pow(b1.radius + p2.size/2, 2)) {
+    if (b1.inAir) {
+      float currentBallAngle = atan2(b1.dy, b1.dx);
+      float currentCarAngle  = atan2(p2.dy, p2.dx);
+      float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
+      float velocityCar  = sqrt((p2.dx * p2.dx) + (p2.dy * p2.dy));
+      if (b1.dx > 0 && p2.dx > 0 || b1.dx < 0 && p2.dx < 0) {
+        if (p2.x < b1.x) {
+          b1.dx = Math.abs(p2.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+        else {
+          b1.dx = -Math.abs(p2.dx * 2 - cos(currentBallAngle) * velocityCar);
+          b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle) * velocityCar;
+        }
+      }
+      else {
+        b1.dx = p2.dx * 2 - cos(currentBallAngle - currentCarAngle) * velocityCar;
+        b1.dy = -(Math.abs(p2.dx) * (float)width/480) - sin(currentBallAngle - currentCarAngle) * velocityCar;
+        p2.dx += cos(currentBallAngle) * velocityBall/10;
+      }
+    }
+    else {
+      float tempDx = b1.dx;
+      b1.dx = p2.dx * 2;
+      b1.dy = -(Math.abs(p2.dx) * (float)width/480);
+      p2.dx = tempDx/10;
+    }
+    if (b1.x < p2.x) {
+      if (b1.y > p2.y) b1.x = p2.x - p2.size/2 - b1.radius;
+      else b1.dx -= 1;
+    }
+    else {
+      if (b1.y > p2.y) b1.x = p2.x + p2.size/2 + b1.radius;
+      else b1.dx += 1;
+    }
+
+  }
+
+  if (b1.x < b1.radius || b1.x > width - b1.radius) {
+    if (b1.x < b1.radius) b1.x = b1.radius;
+    else b1.x = width-b1.radius;
+    b1.dx *= -1;
+  }
+  if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
+  if (p2.boosting && Math.abs(p2.dx) < (float)width/200) p2.boost();
 }
 
 void keyPressed() {
