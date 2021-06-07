@@ -110,7 +110,11 @@ void move() {
     }
     p1.angle = 0;
   }
-  if (p2.inAir) p2.dy += (float)height/900;
+  if (p2.inAir) {
+    if (p2.left && !p2.right) p2.angle -= 3;
+    if (p2.right && !p2.left) p2.angle += 3;
+    p2.dy += (float)height/900;
+  }
   else {
     if (p2.dx >= (float)-width/300 && p2.left) {
       p2.drive((float)-width/10000);
