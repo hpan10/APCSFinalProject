@@ -45,6 +45,10 @@ Started car-ball collisions, boosting, and car rotation. Very complicated stuff.
 
 Car-ball collisions finally work. It isn't 100% perfect but there are few inconsistencies with contact.
 
+6/6/2021
+
+Implemented car rotations while in air and boosting at all angles. Car can fly!!!
+
 Development Log (Emmanuel)
 --------------------------
 5/25/2021
