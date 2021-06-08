@@ -67,7 +67,6 @@ public class Car {
          y - cos(radians(-90 - angle + 45)) * size * (float)Math.sqrt(2) / 4, 
          x + sin(radians(90 - angle) - atan(.5)) * size * (float)Math.sqrt(5) / 4, 
          y + cos(radians(90 - angle) - atan(.5)) * size * (float)Math.sqrt(5) / 4);
-    //quad(x - size/2, y + size/4, x - size/4, y - size/4, x + size/4, y - size/4, x + size/2, y + size/4);
   }
   
 }

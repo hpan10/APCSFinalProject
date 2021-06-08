@@ -27,50 +27,50 @@ void draw() {
 void background() {
   background(255);
   fill(0,255,0);
-  rect(0,2 * height/3,width,height);
+  rect(0,2 * (float)height/3,(float)width,(float)height);
   fill(51,255,248);
-  rect(0,0,width,2 * height/3);
+  rect(0,0,(float)width,2 * (float)height/3);
 }
 
 void drawGoals() {
   fill(255);
   noStroke();
-  rect(-width/16,height/3 - height/150,width/16 + width/200,16 * height/45 - height/150,width/80);
-  rect(width/20 + width/200,height/3,width/16 + width/200,2 * height/3 + height/50,width/80);
-  rect(width + width/16,height/3 - height/150,15 * width/16 - width/200,16 * height/45 - height/150,width/80);
-  rect(19 * width/20 - width/200,height/3,15 * width/16 - width/200,2 * height/3 + height/50,width/80);
+  rect(-(float)width/16,(float)height/3 - (float)height/150,(float)width/16 + (float)width/200,16 * (float)height/45 - (float)height/150,(float)width/80);
+  rect((float)width/20 + (float)width/200,(float)height/3,(float)width/16 + (float)width/200,2 * (float)height/3 + (float)height/50,(float)width/80);
+  rect((float)width + (float)width/16,(float)height/3 - (float)height/150,15 * (float)width/16 - (float)width/200,16 * (float)height/45 - (float)height/150,(float)width/80);
+  rect(19 * (float)width/20 - (float)width/200,(float)height/3,15 * (float)width/16 - (float)width/200,2 * (float)height/3 + (float)height/50,(float)width/80);
   stroke(255);
   strokeWeight(4);
   fill(0);
-  line(width/32,height/3 + height/60,width/16,7 * height/18 + height/60);
-  line(0,height/3 + height/60,width/16,4 * height/9 + height/60);
-  line(0,7 * height/18 + height/60,width/16,height/2 + height/60);
-  line(0,4 * height/9 + height/60,width/16,5 * height/9 + height/60);
-  line(0,height/2 + height/60,width/16,11 * height/18 + height/60);
-  line(0,5 * height/9 + height/60,width/16,2 * height/3 + height/60);
-  line(0,11 * height/18 + height/60,width/32,2 * height/3 + height/60);
-  line(width/32,height/3 + height/60,0,7 * height/18 + height/60);
-  line(width/16,height/3 + height/60,0,4 * height/9 + height/60);
-  line(width/16,7 * height/18 + height/60,0,height/2 + height/60);
-  line(width/16,4 * height/9 + height/60,0,5 * height/9 + height/60);
-  line(width/16,height/2 + height/60,0,11 * height/18 + height/60);
-  line(width/16,5 * height/9 + height/60,0,2 * height/3 + height/60);
-  line(width/16,11 * height/18 + height/60,width/32,2 * height/3 + height/60);
-  line(31 * width/32,height/3 + height/60,15 * width/16,7 * height/18 + height/60);
-  line(31 * width/32,height/3 + height/60,width,7 * height/18 + height/60);
-  line(15 * width/16,height/3 + height/60,width,4 * height/9 + height/60);
-  line(15 * width/16,7 * height/18 + height/60,width,height/2 + height/60);
-  line(15 * width/16,4 * height/9 + height/60,width,5 * height/9 + height/60);
-  line(15 * width/16,height/2 + height/60,width,11 * height/18 + height/60);
-  line(15 * width/16,5 * height/9 + height/60,width,2 * height/3 + height/60);
-  line(15 * width/16,5 * height/9 + height/60,15 * width/16,2 * height/3 + height/60);
-  line(15 * width/16,11 * height/18 + height/60,31 * width/32,2 * height/3 + height/60);
-  line(31 * width/32,2 * height/3 + height/60,width,11 * height/18 + height/60);
-  line(width,height/3 + height/60,15 * width/16,4 * height/9 + height/60);
-  line(width,7 * height/18 + height/60,15 * width/16,height/2 + height/60);
-  line(width,4 * height/9 + height/60,15 * width/16,5 * height/9 + height/60);
-  line(width,height/2 + height/60,15 * width/16,11 * height/18 + height/60);
-  line(width,5 * height/9 + height/60,15 * width/16,2 * height/3 + height/60);
+  line((float)width/32,(float)height/3 + (float)height/60,(float)width/16,7 * (float)height/18 + (float)height/60);
+  line(0,(float)height/3 + (float)height/60,(float)width/16,4 * (float)height/9 + (float)height/60);
+  line(0,7 * (float)height/18 + (float)height/60,(float)width/16,(float)height/2 + (float)height/60);
+  line(0,4 * (float)height/9 + (float)height/60,(float)width/16,5 * (float)height/9 + (float)height/60);
+  line(0,(float)height/2 + (float)height/60,(float)width/16,11 * (float)height/18 + (float)height/60);
+  line(0,5 * (float)height/9 + (float)height/60,(float)width/16,2 * (float)height/3 + (float)height/60);
+  line(0,11 * (float)height/18 + (float)height/60,(float)width/32,2 * (float)height/3 + (float)height/60);
+  line((float)width/32,(float)height/3 + (float)height/60,0,7 * (float)height/18 + (float)height/60);
+  line((float)width/16,(float)height/3 + (float)height/60,0,4 * (float)height/9 + (float)height/60);
+  line((float)width/16,7 * (float)height/18 + (float)height/60,0,(float)height/2 + (float)height/60);
+  line((float)width/16,4 * (float)height/9 + (float)height/60,0,5 * (float)height/9 + (float)height/60);
+  line((float)width/16,(float)height/2 + (float)height/60,0,11 * (float)height/18 + (float)height/60);
+  line((float)width/16,5 * (float)height/9 + (float)height/60,0,2 * (float)height/3 + (float)height/60);
+  line((float)width/16,11 * (float)height/18 + (float)height/60,(float)width/32,2 * (float)height/3 + (float)height/60);
+  line(31 * (float)width/32,(float)height/3 + (float)height/60,15 * (float)width/16,7 * (float)height/18 + (float)height/60);
+  line(31 * (float)width/32,(float)height/3 + (float)height/60,(float)width,7 * (float)height/18 + (float)height/60);
+  line(15 * (float)width/16,(float)height/3 + (float)height/60,(float)width,4 * (float)height/9 + (float)height/60);
+  line(15 * (float)width/16,7 * (float)height/18 + (float)height/60,(float)width,(float)height/2 + (float)height/60);
+  line(15 * (float)width/16,4 * (float)height/9 + (float)height/60,(float)width,5 * (float)height/9 + (float)height/60);
+  line(15 * (float)width/16,(float)height/2 + (float)height/60,(float)width,11 * (float)height/18 + (float)height/60);
+  line(15 * (float)width/16,5 * (float)height/9 + (float)height/60,(float)width,2 * (float)height/3 + (float)height/60);
+  line(15 * (float)width/16,5 * (float)height/9 + (float)height/60,15 * (float)width/16,2 * (float)height/3 + (float)height/60);
+  line(15 * (float)width/16,11 * (float)height/18 + (float)height/60,31 * (float)width/32,2 * (float)height/3 + (float)height/60);
+  line(31 * (float)width/32,2 * (float)height/3 + (float)height/60,(float)width,11 * (float)height/18 + (float)height/60);
+  line((float)width,(float)height/3 + (float)height/60,15 * (float)width/16,4 * (float)height/9 + (float)height/60);
+  line((float)width,7 * (float)height/18 + (float)height/60,15 * (float)width/16,(float)height/2 + (float)height/60);
+  line((float)width,4 * (float)height/9 + (float)height/60,15 * (float)width/16,5 * (float)height/9 + (float)height/60);
+  line((float)width,(float)height/2 + (float)height/60,15 * (float)width/16,11 * (float)height/18 + (float)height/60);
+  line((float)width,5 * (float)height/9 + (float)height/60,15 * (float)width/16,2 * (float)height/3 + (float)height/60);
   
   strokeWeight(1);
   stroke(1);
@@ -81,27 +81,26 @@ void reset() {
 }
 
 void move() {
-  if (p1.y <= height/3 - 50 && p1.x <width/16) {
+  if (p1.y < 2 * (float)height/3) p1.inAir = true;
+  if (p2.y < 2 * (float)height/3) p2.inAir = true;
+  if ((p1.x < (float)width/16 + (float)width/200 || p1.x > 15 * (float)width/16 - (float)width/200) && p1.dy >= 0 && p1.y >= (float)height/3 - (float)height/150 - p1.size * Math.sqrt(5) / 4 && p1.y <= 16 * (float)height/45 - (float)height/150 ) {
     p1.dy = 0;
-    p1.y =  (float)height/3-50;
+    p1.y = (float)height/3 - (float)height/150 - p1.size * (float)Math.sqrt(5) / 4;
     p1.inAir = false;
   }
-  if (p2.y <= height/3 - 50 && p2.x <width/16) {
+  if ((p2.x < (float)width/16 + (float)width/200 || p2.x > 15 * (float)width/16 - (float)width/200) && p2.dy >= 0 && p2.y >= (float)height/3 - (float)height/150 - p2.size * Math.sqrt(5) / 4 && p2.y <= 16 * (float)height/45 - (float)height/150 ) {
     p2.dy = 0;
-    p2.y =  (float)height/3-50;
+    p2.y = (float)height/3 - (float)height/150 - p2.size * (float)Math.sqrt(5) / 4;
     p2.inAir = false;
   }
-  if (p1.y < 2 * height/3) p1.inAir = true;
-  if (p2.y < 2 * height/3) p2.inAir = true;
-  System.out.println(p1.angle);
   if (p1.inAir) {
     if (p1.left && !p1.right) p1.angle -= 3;
     if (p1.right && !p1.left) p1.angle += 3;
     p1.dy += (float)height/900;
   }
   else {
-    if (p1.dx >= (float)-width/300 && p1.left) {
-      p1.drive((float)-width/10000);
+    if (p1.dx >= -(float)width/300 && p1.left) {
+      p1.drive(-(float)width/10000);
       if (!p1.right) p1.lastDirection = -1;
     }
     if (p1.dx <= (float)width/300 && p1.right) {
@@ -116,8 +115,8 @@ void move() {
     p2.dy += (float)height/900;
   }
   else {
-    if (p2.dx >= (float)-width/300 && p2.left) {
-      p2.drive((float)-width/10000);
+    if (p2.dx >= -(float)width/300 && p2.left) {
+      p2.drive(-(float)width/10000);
       if (!p2.right) p2.lastDirection = -1;
     }
     if (p2.dx <= (float)width/300 && p2.right) {
@@ -127,12 +126,15 @@ void move() {
     p2.angle = 0;
   }
   if (p1.y <= 0) {
+    p1.y = p1.size/2;
     p1.dy = p1.dy*-1;
   }
-  if (b1.y <= height/18) {
+  if (b1.y <= b1.radius) {
+    b1.y = b1.radius;
     b1.dy = b1.dy*-1;
   }
   if (p2.y <= 0) {
+    p2.y = p2.size/2;
     p2.dy = p2.dy*-1;
   }
   if (p1.y >= 2 * (float)height/3) {
@@ -140,12 +142,32 @@ void move() {
     p1.y = 2 * (float)height/3;
     p1.inAir = false;
   }
+  
   if (p2.y >= 2 * (float)height/3) {
     p2.dy = 0;
     p2.y = 2 * (float)height/3;
     p2.inAir = false;
   }
-  if (b1.y < 2 * height/3 - b1.radius + p1.size/2) {
+  if (b1.x < (float)width/16 + (float)width/200 + b1.radius || b1.x > 15 * (float)width/16 - (float)width/200 - b1.radius) {
+    if (Math.abs(b1.y - 9 * (float)height/25) <= b1.radius) {
+      b1.y = 9 * (float)height/25 - b1.radius;
+      if (b1.y > 9 * (float)height/25) {
+        if (Math.abs(b1.dy) > (float)height/300) {
+          b1.dy = -Math.abs(b1.dy / 1.5);
+          b1.dx /= 1.1;
+        }
+        else {
+          b1.dy = 0;
+          b1.inAir = false;
+        }
+      }
+      else {
+        b1.y = 9 * (float)height/25 + b1.radius;
+        b1.dy *= -1;
+      }
+    }
+  }
+  if (b1.y < 2 * (float)height/3 - b1.radius + p1.size/2) {
     b1.inAir = true;
     b1.dy += (float)height/900;
   }
@@ -161,14 +183,14 @@ void move() {
       b1.inAir = false;
     }
   }
-  if (p1.x < p1.size/2 || p1.x > width - p1.size/2) {
+  if (p1.x < p1.size/2 || p1.x > (float)width - p1.size/2) {
     if (p1.x < p1.size/2) p1.x = p1.size/2;
-    else p1.x = width - p1.size/2;
+    else p1.x = (float)width - p1.size/2;
     p1.dx *= -1;
   }
-  if (p2.x < p2.size/2 || p2.x > width - p2.size/2) {
+  if (p2.x < p2.size/2 || p2.x > (float)width - p2.size/2) {
     if (p2.x < p2.size/2) p2.x = p2.size/2;
-    else p2.x = width-p2.size/2;
+    else p2.x = (float)width-p2.size/2;
     p2.dx *= -1;
   }
   if (Math.abs(p1.x-p2.x) <= p1.size && Math.abs(p1.y-p2.y) <= p1.size) {
@@ -208,8 +230,8 @@ void move() {
       }
     }
     else {
-      p1.dy -= (float)height/180 * Math.abs(p2.dx * 1600/width);
-      p2.dy -= (float)height/180 * Math.abs(p1.dx * 1600/width);
+      p1.dy -= (float)height/180 * Math.abs(p2.dx * 1600/(float)width);
+      p2.dy -= (float)height/180 * Math.abs(p1.dx * 1600/(float)width);
       p1.dx = p2.dx;
       p2.dx = temp;
     }
@@ -293,9 +315,9 @@ void move() {
 
   }
 
-  if (b1.x < b1.radius || b1.x > width - b1.radius) {
+  if (b1.x < b1.radius || b1.x > (float)width - b1.radius) {
     if (b1.x < b1.radius) b1.x = b1.radius;
-    else b1.x = width-b1.radius;
+    else b1.x = (float)width-b1.radius;
     b1.dx *= -1;
   }
   if (p1.boosting && Math.abs(p1.dx) < (float)width/200) p1.boost();
