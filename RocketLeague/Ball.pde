@@ -13,7 +13,8 @@ public class Ball {
   }
   
   boolean inGoal() {
-    return (x < width / 16 || x > width * 15 / 16);
+    return ((x < (float)width/20 + (float)width/200 - radius/2 || x > 19 * (float)width/20 - (float)width/200 + radius/2)
+         && y > 9 * height/25 + radius);
   }
   
   void display() {

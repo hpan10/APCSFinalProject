@@ -8,12 +8,17 @@ void setup() {
   size(1600, 900);
   p1 = new Car((float)width/5 , 6 * (float)width/16,1, color(0, 0, 255));
   p2 = new Car(4 * (float)width/5,6 * (float)width/16,-1, color (255, 140, 0));
-  b1 = new Ball((float)height/18);
+  b1 = new Ball((float)height/20);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
 }
 
 void draw() {
+  if (b1.inGoal()) {
+    if (b1.x < width/2) t1.p2Goals++;
+    else t1.p1Goals++;
+    reset();
+  }
   tick();
   background();
   p1.display();
@@ -77,7 +82,9 @@ void drawGoals() {
 }
 
 void reset() {
-  
+  p1 = new Car((float)width/5 , 6 * (float)width/16,1, color(0, 0, 255));
+  p2 = new Car(4 * (float)width/5,6 * (float)width/16,-1, color (255, 140, 0));
+  b1 = new Ball((float)height/18);
 }
 
 void move() {
@@ -150,8 +157,8 @@ void move() {
   }
   if (b1.x < (float)width/16 + (float)width/200 + b1.radius || b1.x > 15 * (float)width/16 - (float)width/200 - b1.radius) {
     if (Math.abs(b1.y - 9 * (float)height/25) <= b1.radius) {
-      b1.y = 9 * (float)height/25 - b1.radius;
-      if (b1.y > 9 * (float)height/25) {
+      if (b1.y < 9 * (float)height/25) {
+        b1.y = 9 * (float)height/25 - b1.radius;
         if (Math.abs(b1.dy) > (float)height/300) {
           b1.dy = -Math.abs(b1.dy / 1.5);
           b1.dx /= 1.1;
