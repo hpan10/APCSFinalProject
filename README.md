@@ -74,3 +74,11 @@ Today, I focused a lot on aesthetics, and making it look more like a stadium. It
 6/2/2021
 
 Today, my focus was on rotation. First, I added a ceiling, which was rather simple. Then, I worked on rotation. I didn't quite get it down, but I worked on a couple ideas. I tried to use the built in rotate() command, but that wouldn't work as it would do it too slowly, rotate it about the origin, and rotate the whole thing, instead of just one car. I used a unit circle next, but couldn't get anywhere with that.
+
+6/4/2021
+
+Worked back on the background. I thought about implementing grass on the floor or stadium things behind the map, but the way I was doing was too tedious. I was implementing each object of the background separatley, when it should be premade.
+
+6/7/2021
+
+Took a new approach regarding background. I focused on making grass by making small lines in random positions on the green, which is supposed to give it texture. I used random to generate the coordinates of this. The problem was that Processing was calling the function over and over and over again, which didn't bode well. The random code is written, my next goal is just to get it to generate once and then stick.
