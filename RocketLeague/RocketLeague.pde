@@ -1,9 +1,10 @@
-import java.util.Random;
+import java.util.*;
 Car p1;
 Car p2;
 Ball b1;
 ScoreboardAndTimer t1;
 long millis;
+ArrayList<Float> grassX, grassY;
 
 void setup() {
   size(1600, 900);
@@ -11,8 +12,10 @@ void setup() {
   p2 = new Car(4 * (float)width/5,6 * (float)width/16,-1, color (255, 140, 0));
   b1 = new Ball((float)height/20);
   t1 = new ScoreboardAndTimer();
+  grassX = new ArrayList<Float>();
+  grassY = new ArrayList<Float>();
   millis = System.currentTimeMillis();
-  grass();
+  makeGrass();
 }
 
 void draw() {
@@ -28,32 +31,30 @@ void draw() {
   b1.display();
   t1.display();
   drawGoals();
- // grass();
   move();
 }
-void grass() {
-  stroke(38,38,255);
+void makeGrass() {
   for (int i = 0; i < 100; i++) {
-  int w = width;
-  int h = height;
-  float xx = (float)Math.random() * w;
-  int xxx = (int) xx;
-  float yy = (float)Math.random() * (float)(h/3) + (float)(h*2/3);
-  int yyy = (int) yy;
-  
-  strokeWeight(10);
-  
-    line(xx,yy,xx,yy-5);
+    grassX.add((float)Math.random() * width);
+    grassY.add((float)Math.random() * (float)(height/3) + (float)(height*2/3));
   }
-  strokeWeight(1);
-  stroke(0);
 }
+
 void background() {
   background(255);
   fill(0,255,0);
   rect(0,2 * (float)height/3,(float)width,(float)height);
   fill(51,255,248);
   rect(0,0,(float)width,2 * (float)height/3);
+  stroke(38,38,255);
+  strokeWeight(10);
+  for (int i = 0; i < 100; i++) {
+    float x = grassX.get(i);
+    float y = grassY.get(i);
+    line(x,y,x,y-5);
+  }
+  strokeWeight(1);
+  stroke(0);
 }
 
 void drawGoals() {
