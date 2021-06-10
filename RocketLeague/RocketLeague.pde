@@ -19,19 +19,39 @@ void setup() {
 }
 
 void draw() {
-  if (b1.inGoal()) {
-    if (b1.x < width/2) t1.p2Goals++;
-    else t1.p1Goals++;
-    reset();
+  if (t1.p1Goals != 7 && t1.p2Goals != 7 && t1.time != 0) {
+    if (b1.inGoal()) {
+      if (b1.x < width/2) t1.p2Goals++;
+      else t1.p1Goals++;
+      if (t1.p1Goals != 7 && t1.p2Goals != 7) reset();
+    }
+    tick();
+    background();
+    p1.display();
+    p2.display();
+    b1.display();
+    t1.display();
+    drawGoals();
+    move();
   }
-  tick();
-  background();
-  p1.display();
-  p2.display();
-  b1.display();
-  t1.display();
-  drawGoals();
-  move();
+  else {
+    fill(255, 200);
+    rect(0, 0, width, height);
+    fill(0);
+    if (t1.time == 0) {
+      if (t1.p1Goals == t1.p2Goals) text("Tie!", width/2, height/2);
+      else if (t1.p1Goals > t1.p2Goals) text("Player 1 Wins!", width/2, height/2);
+      else text("Player 2 Wins!", width/2, height/2);
+      
+    }
+    else if (t1.p1Goals == 7) {
+      text("Player 1 Wins!", width/2, height/2);
+    }
+    else if (t1.p2Goals == 7) {
+      text("Player 2 Wins!", width/2, height/2);
+    }
+    noLoop();
+  }
 }
 
 void makeGrass() {
@@ -178,9 +198,9 @@ void move() {
     p2.inAir = false;
   }
   if (b1.x < (float)width/16 + (float)width/200 + b1.radius || b1.x > 15 * (float)width/16 - (float)width/200 - b1.radius) {
-    if (Math.abs(b1.y - 9 * (float)height/25) <= b1.radius) {
-      if (b1.y < 9 * (float)height/25) {
-        b1.y = 9 * (float)height/25 - b1.radius;
+    if (Math.abs(b1.y - 304 * (float)height/900) <= b1.radius) {
+      if (b1.y < 304 * (float)height/900) {
+        b1.y = 304 * (float)height/900 - b1.radius - (float)width/160;
         if (Math.abs(b1.dy) > (float)height/300) {
           b1.dy = -Math.abs(b1.dy / 1.5);
           b1.dx /= 1.1;
@@ -191,14 +211,14 @@ void move() {
         }
       }
       else {
-        b1.y = 9 * (float)height/25 + b1.radius;
+        b1.y = 304 * (float)height/900 + b1.radius + (float)width/160;
         b1.dy *= -1;
       }
     }
   }
   if (b1.y < 2 * (float)height/3 - b1.radius + p1.size/2) {
     b1.inAir = true;
-    b1.dy += (float)height/900;
+    b1.dy += (float)height/1800;
   }
   if (b1.y > 2 * (float)height/3 - b1.radius + p1.size/2) {
     if (Math.abs(b1.dy) > (float)height/300) {
@@ -273,7 +293,7 @@ void move() {
       float currentBallAngle = atan2(b1.dy, b1.dx);
       float currentCarAngle  = atan2(p1.dy, p2.dx);
       float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
-      float velocityCar  = sqrt((p1.dx * p1.dx) + (p1.dy * p1.dy));
+      float velocityCar  = sqrt((p1.dx * p1.dx) + (p1.dy * p1.dy))/3;
       if (b1.dx > 0 && p1.dx > 0 || b1.dx < 0 && p1.dx < 0) {
         if (p1.x < b1.x) {
           b1.dx = Math.abs(p1.dx * 2 - cos(currentBallAngle) * velocityCar);
@@ -292,8 +312,8 @@ void move() {
     }
     else {
       float tempDx = b1.dx;
-      b1.dx = p1.dx * 2;
-      b1.dy = -(Math.abs(p1.dx) * (float)width/480);
+      b1.dx = p1.dx;
+      b1.dy = -(Math.abs(p1.dx/3) * (float)width/480);
       p1.dx = tempDx/10;
     }
     if (b1.x < p1.x) {
@@ -310,7 +330,7 @@ void move() {
       float currentBallAngle = atan2(b1.dy, b1.dx);
       float currentCarAngle  = atan2(p2.dy, p2.dx);
       float velocityBall = sqrt((b1.dx * b1.dx) + (b1.dy * b1.dy));
-      float velocityCar  = sqrt((p2.dx * p2.dx) + (p2.dy * p2.dy));
+      float velocityCar  = sqrt((p2.dx * p2.dx) + (p2.dy * p2.dy))/3;
       if (b1.dx > 0 && p2.dx > 0 || b1.dx < 0 && p2.dx < 0) {
         if (p2.x < b1.x) {
           b1.dx = Math.abs(p2.dx * 2 - cos(currentBallAngle) * velocityCar);
@@ -329,8 +349,8 @@ void move() {
     }
     else {
       float tempDx = b1.dx;
-      b1.dx = p2.dx * 2;
-      b1.dy = -(Math.abs(p2.dx) * (float)width/480);
+      b1.dx = p2.dx;
+      b1.dy = -(Math.abs(p2.dx/3) * (float)width/480);
       p2.dx = tempDx/10;
     }
     if (b1.x < p2.x) {
