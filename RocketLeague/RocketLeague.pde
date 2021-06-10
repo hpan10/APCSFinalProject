@@ -1,3 +1,4 @@
+import java.util.Random;
 Car p1;
 Car p2;
 Ball b1;
@@ -11,6 +12,7 @@ void setup() {
   b1 = new Ball((float)height/20);
   t1 = new ScoreboardAndTimer();
   millis = System.currentTimeMillis();
+  grass();
 }
 
 void draw() {
@@ -26,9 +28,26 @@ void draw() {
   b1.display();
   t1.display();
   drawGoals();
+ // grass();
   move();
 }
-
+void grass() {
+  stroke(38,38,255);
+  for (int i = 0; i < 100; i++) {
+  int w = width;
+  int h = height;
+  float xx = (float)Math.random() * w;
+  int xxx = (int) xx;
+  float yy = (float)Math.random() * (float)(h/3) + (float)(h*2/3);
+  int yyy = (int) yy;
+  
+  strokeWeight(10);
+  
+    line(xx,yy,xx,yy-5);
+  }
+  strokeWeight(1);
+  stroke(0);
+}
 void background() {
   background(255);
   fill(0,255,0);
