@@ -33,7 +33,9 @@ void draw() {
   drawGoals();
   move();
 }
+
 void makeGrass() {
+  stroke(38,38,255);
   for (int i = 0; i < 100; i++) {
     grassX.add((float)Math.random() * width);
     grassY.add((float)Math.random() * (float)(height/3) + (float)(height*2/3));
