@@ -312,7 +312,8 @@ void move() {
     }
     else {
       float tempDx = b1.dx;
-      b1.dx = p1.dx;
+      b1.dx = Math.abs(p1.dx) + Math.abs(p1.dy);
+      if (p1.x > b1.x) b1.dx *= -1;
       b1.dy = -(Math.abs(p1.dx/3) * (float)width/480);
       p1.dx = tempDx/10;
     }
@@ -349,7 +350,8 @@ void move() {
     }
     else {
       float tempDx = b1.dx;
-      b1.dx = p2.dx;
+      b1.dx = Math.abs(p2.dx) + Math.abs(p2.dy);
+      if (p2.x > b1.x) b1.dx *= -1;
       b1.dy = -(Math.abs(p2.dx/3) * (float)width/480);
       p2.dx = tempDx/10;
     }
