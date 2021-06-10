@@ -28,9 +28,10 @@ void draw() {
   b1.display();
   t1.display();
   drawGoals();
- // grass();
+ 
   move();
 }
+
 void grass() {
   stroke(38,38,255);
   for (int i = 0; i < 100; i++) {
