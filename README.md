@@ -90,3 +90,7 @@ Worked back on the background. I thought about implementing grass on the floor o
 6/7/2021
 
 Took a new approach regarding background. I focused on making grass by making small lines in random positions on the green, which is supposed to give it texture. I used random to generate the coordinates of this. The problem was that Processing was calling the function over and over and over again, which didn't bode well. The random code is written, my next goal is just to get it to generate once and then stick.
+
+6/10/2021
+
+Worked in class on the grass. The project is nearly finished.
