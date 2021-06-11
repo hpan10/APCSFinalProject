@@ -55,8 +55,7 @@ void draw() {
 }
 
 void makeGrass() {
-  stroke(38,38,255);
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 500; i++) {
     grassX.add((float)Math.random() * width);
     grassY.add((float)Math.random() * (float)(height/3) + (float)(height*2/3));
   }
@@ -64,13 +63,13 @@ void makeGrass() {
 
 void background() {
   background(255);
-  fill(0,255,0);
+  fill(0,204,0);
   rect(0,2 * (float)height/3,(float)width,(float)height);
   fill(51,255,248);
   rect(0,0,(float)width,2 * (float)height/3);
-  stroke(38,38,255);
+  stroke(34,139,34);
   strokeWeight(10);
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 500; i++) {
     float x = grassX.get(i);
     float y = grassY.get(i);
     line(x,y,x,y-5);
