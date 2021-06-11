@@ -49,6 +49,14 @@ Car-ball collisions finally work. It isn't 100% perfect but there are few incons
 
 Implemented car rotations while in air and boosting at all angles. Car can fly!!!
 
+6/8/2021
+
+Created a functional crossbar. The ball and cars can now make contact with it instead of just going through. The car can fly through it from below but not from above. From above, it acts as a floor.
+
+6/10/2021
+
+Made some grass for beauty and made the game end whenever a player reaches 7 goals or when the timer hits 0. The winner is then displayed.
+
 Development Log (Emmanuel)
 --------------------------
 5/25/2021
